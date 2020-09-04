@@ -20,15 +20,20 @@ Será necessário a instalação do DotNet EF com a linha e comando:
 dotnet tool install --global dotnet-ef
 ````
 
-O projeto foi criado utilizando o conceito de Code First para o Banco de Dados.
-Para que seja possível utilizar os métodos da API será necessário executar a migration inicial no console de pacotes com o comando: 
+Vale lembrar que o projeto foi criado utilizando o conceito de Code First para o Banco de Dados.
+
+Para que seja possível buildar a aplicação, na primeira vez, será necessário rodar os seguintes comandos no console: 
 ````
 dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package Microsoft.EntityFrameworkCore.Design
 dotnet ef migrations add InitialCreate
 dotnet ef database update
-dotnet run
 ````
+
+Para rodar, utilize:
+```
+dotnet run
+```
 
 ## Utilização
 Para uma melhor interação com a API, foi utilizado o Swagger para documentá-la.
