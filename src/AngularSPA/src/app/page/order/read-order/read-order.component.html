@@ -1,0 +1,64 @@
+<div class="header justify-content-start">
+    <h2>Pedidos</h2>
+    <hr>
+</div>
+
+<div class="row col-lg justify-content-end">
+    <button class="btn btn-outline-info m-1" (click)="createOrder()">Novo Pedido</button>
+</div>
+
+<hr>
+
+<div class="col-lg justify-content-center">
+    <table class="table">
+        <thead class="thead text-center">
+            <tr>
+                <th scope="col">Nº do Pedido</th>
+                <th scope="col">Data de Vencimento</th>
+                <th scope="col">Desconto Aplicado</th>
+                <th scope="col">Valor do Pedido</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="ordersObj != undefined && ordersObj.length > 0">
+            <tr class="table-default" *ngFor="let item of pagedResult" [ngClass]="validateOrderValidity(item)">
+                <td class="text-center">{{item.orderId}}</td>
+                <td class="text-center">{{item.orderValidity | date:'dd/MM/yyyy'}}</td>
+                <td class="text-center">R$ {{item.orderDiscount}}</td>
+                <td class="text-center">R$ {{item.orderValue}}</td>
+                <td class="text-center">
+                    <button class="btn btn-outline-primary btn-sm m-1" type="button" (click)="showOrderProducts(item.products)">Produtos</button>
+                    <button class="btn btn-outline-secondary btn-sm m-1" type="button" (click)="updateOrder(item)" [disabled]="validateOrderValidity(item) == 'bg-order-invalid' ? true : false">Editar</button>
+                    <button class="btn btn-outline-danger btn-sm m-1" type="button" (click)="deleteOrder(item.orderId)">Excluir</button>
+                </td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="ordersObj.length == 0">
+            <tr class="table-default">
+                <td colspan="5" class="text-center">Nenhum pedido registrado</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div *ngIf="ordersObj.length > 0">
+        <mat-paginator [length]="this.ordersObj.length" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)" (selectedValueChange)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+
+    <div class="row">
+        <div class="row">
+            <div class="ml-4 bg-order-invalid" style="width: 20px; height: 20px;">&nbsp;</div>
+            <label class="mr-4">Pedido vencido</label>
+        </div>
+        <div class="row">
+            <div class="ml-4 bg-order-toinvalid" style="width: 20px; height: 20px;">&nbsp;</div>
+            <label class="mr-4">Pedido à vencer</label>
+        </div>
+        <div class="row">
+            <div class="ml-4 bg-order-valid" style="width: 20px; height: 20px;">&nbsp;</div>
+            <label class="mr-4">Pedido válido</label>
+        </div>
+    </div>
+
+</div>

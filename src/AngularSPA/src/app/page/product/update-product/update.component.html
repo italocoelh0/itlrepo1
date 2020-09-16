@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-header">
+        <b>Atualizar Produto</b>
+    </div>
+    <div class="card-body">
+        <form (ngSubmit)="onFormSubmit(editProductForm.valid)" #editProductForm="ngForm">
+            <div class="form-group">
+                <label>Código</label>
+                <input class="form-control" type="text" [(ngModel)]="frmPId" name="frmPId" disabled>
+            </div>
+            <div class="form-group">
+                <label>Nome</label>
+                <input class="form-control" type="text" [(ngModel)]="frmPName" name="frmPName" required>
+            </div>
+            <div class="form-group">
+                <label>Valor</label>
+                <input currencyMask class="form-control" type="text" [(ngModel)]="frmPValue" name="frmPValue" required>
+            </div>
+            <div class="col-lg justify-content-center">
+                <button class="btn btn-outline-success m-1" type="submit">Salvar</button>
+                <button class="btn btn-danger m-1" type="button" (click)="closeDialog()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>

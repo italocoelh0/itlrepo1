@@ -1,0 +1,33 @@
+<div class="form-group col-lg justify-content-center">
+    <table class="table">
+        <thead class="thead text-center">
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="productsObj.length > 0">
+            <tr class="table-default" *ngFor="let item of pagedResult">
+                <td class="text-center">{{item.productId}}</td>
+                <td class="text-center">{{item.productName}}</td>
+                <td class="text-center">R$ {{item.productValue}}</td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="productsObj.length == 0">
+            <tr class="table-default">
+                <td colspan="3" class="text-center">Nenhum produto adicionado</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div *ngIf="productsObj.length > 0">
+        <mat-paginator [length]="this.productsObj.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)" (selectedValueChange)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+</div>
+
+<div class="row col-lg justify-content-end ">
+    <button class="btn btn-danger m-1" type="button" (click)="closeDialog()">Sair</button>
+</div>

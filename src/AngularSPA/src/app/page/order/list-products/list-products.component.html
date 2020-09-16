@@ -1,0 +1,39 @@
+<div class="form-group col-lg justify-content-center">
+    <table class="table">
+        <thead class="thead text-center">
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Valor</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="productsObj.length > 0">
+            <tr class="table-default" *ngFor="let item of pagedResult">
+                <td class="text-center">{{item.productId}}</td>
+                <td class="text-center">{{item.productName}}</td>
+                <td class="text-center">R$ {{item.productValue}}</td>
+                <td class="text-center"><input type="checkbox" [(ngModel)]="item.productSelected" (change)="checkChanged()"></td>
+            </tr>
+        </tbody>
+
+        <tbody *ngIf="productsObj.length == 0">
+            <tr class="table-default">
+                <td colspan="3" class="text-center">Nenhum produto adicionado</td>
+            </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div *ngIf="productsObj.length > 0">
+        <mat-paginator [length]="this.productsObj.length" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPageChange($event)" (selectedValueChange)="onPageChange($event)">
+        </mat-paginator>
+    </div>
+</div>
+
+<div>
+    <label>Quantidade de produtos selecionados: {{qtdSelectedProducts}}</label>
+</div>
+
+<div class="row col-lg justify-content-center ">
+    <button class="btn btn-outline-success m-1" (click)="chooseProducts()">Salvar</button>
+    <button class="btn btn-danger m-1 " type="button " (click)="closeDialog() ">Cancelar</button>
+</div>

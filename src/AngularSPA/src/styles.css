@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.bg-order-valid {
+    background-color: rgba(0, 200, 0, 0.25);
+}
+
+.bg-order-invalid {
+    background-color: rgba(200, 0, 0, 0.25);
+}
+
+.bg-order-toinvalid {
+    background-color: rgba(0, 0, 200, 0.25);
+}

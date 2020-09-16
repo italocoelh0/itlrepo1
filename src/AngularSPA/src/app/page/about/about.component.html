@@ -1,0 +1,42 @@
+<div class="text-center">
+    <p>O candidato deverá desenvolver um CRUD para cadastrar pedidos de pagamento para produtos.</p>
+    <p>Os pedido possuem os seguintes atributos:</p>
+    <table class="table">
+        <thead class="thead text-center">
+            <tr>
+                <th scope="col" colspan="2">Pedido:</th>
+            </tr>
+            <tr>
+                <th scope="col">Propriedade</th>
+                <th scope="col">Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="table-default">
+                <td class="text-center">nome_produto</td>
+                <td class="text-center">string</td>
+            </tr>
+            <tr class="table-default">
+                <td class="text-center">valor</td>
+                <td class="text-center">decimal</td>
+            </tr>
+            <tr class="table-default">
+                <td class="text-center">data_vencimento</td>
+                <td class="text-center">date</td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <p>
+        Na listagem dos pedidos o sistema deve categorizar por cores os pedidos que:</p>
+    <p>● Estão vencidos </p>
+    <p>-> Pedidos que a data de vencimento são menores que a data atual;</p>
+    <p>● Estão quase vencendo </p>
+    <p>-> Pedidos que a data de vencimento está com 3 dias para vencer;</p>
+    <p>● Estão válidos</p>
+    <p>-> Pedidos em que a data de vencimento é maior que 3 dias da data atual;</p>
+
+    <br>
+    <p>*O candidato também terá que desenvolver uma tela para adicionar descontos no valor do pedido. Somente os pedidos que não estão vencidos podem receber descontos.</p>
+    <p> O candidato é livre para desenvolver, da melhor forma que achar necessário, os layouts e os fluxos das páginas.</p>
+</div>
